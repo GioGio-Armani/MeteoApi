@@ -1,19 +1,22 @@
 const api = {
-  key: "",
+  key: "87c142b103ccea4c035d943bd3402a9b",
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
 const searchbox = document.querySelector("#search-box");
-const btn = document.querySelector("#search-button");
+const btn = document.querySelector("button");
 
-searchbox.addEventListener("keypress", setQuery);
+searchbox.addEventListener("keypress", (e) => {
+  if (e.keyCode === 13) {
+    setQuery(searchbox.value);
+  }
+});
+
 btn.addEventListener("click", setQuery);
 
 function setQuery(evt) {
-  if (evt.keyCode == 13) {
-    getResults(searchbox.value);
-    console.log(searchbox.value);
-  }
+  getResults(searchbox.value);
+  console.log(searchbox.value);
 }
 
 function getResults(query) {
@@ -43,16 +46,16 @@ function displayResults(weather) {
   date.innerHTML = dateBuilder(now);
 
   let temp = document.querySelector("#temperature");
-  temp.innerHTML = `${Math.round(weather.main.temp)}°c`;
+  temp.innerHTML = `${Math.round(weather.main.temp)}°C`;
 
   let weather_el = document.querySelector("#description");
   weather_el.innerHTML = weather.weather[0].description;
 
   let humidity = document.querySelector(".humidity");
-  humidity.innerHTML = `${weather.main.humidity}%`;
+  humidity.innerHTML = `<i class="fa-solid fa-droplet"></i> ${weather.main.humidity}%`;
 
   let wind = document.querySelector(".wind");
-  wind.innerHTML = `${weather.wind.speed} km/h`;
+  wind.innerHTML = `<i class="fa-solid fa-wind"></i> ${weather.wind.speed} km/h`;
 
   let icon = document.querySelector("#icon");
   icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"/>`;
