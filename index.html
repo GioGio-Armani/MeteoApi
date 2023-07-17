@@ -6,6 +6,10 @@
     <title>application meteo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"
+/>
 </head>
 <body>
     <h1>Meteo</h1>
@@ -14,19 +18,74 @@
             <label for="search-box">Entrez une ville</label>
             <div class="search-container">
                 <input type="text" id="search-box" name="search-box">
+                <select name="country" id="country">
+                    <option value="">Pays</option>
+                    <option value="fr">France</option>
+                    <option value="us">USA</option>
+                    <option value="it">Italie</option>
+                    <option value="es">Espagne</option>
+                    <option value="de">Allemagne</option>
+                    <option value="pt">Portugal</option>
+                    <option value="be">Belgique</option>
+                    <option value="gb">Angleterre</option>
+                    <option value="ca">Canada</option>
+                    <option value="ma">Maroc</option>
+                    <option value="dz">Algérie</option>
+                    <option value="tn">Tunisie</option>
+                    <option value="ch">Suisse</option>
+                    <option value="jp">Japon</option>
+                    <option value="cn">Chine</option>
+                    <option value="ru">Russie</option>
+                    <option value="br">Brésil</option>
+                    <option value="ar">Argentine</option>
+                    <option value="mx">Mexique</option>
+                    <option value="in">Inde</option>
+                    <option value="au">Australie</option>
+                    <option value="za">Afrique du Sud</option>
+                    <option value="eg">Egypte</option>
+                    <option value="ng">Nigeria</option>
+                    <option value="id">Indonésie</option>
+                    <option value="tr">Turquie</option>
+                    <option value="ir">Iran</option>
+                    <option value="pk">Pakistan</option>
+                    <option value="sa">Arabie Saoudite</option>
+                    <option value="kr">Corée du Sud</option>
+                    <option value="th">Thaïlande</option>
+                    <option value="pl">Pologne</option>
+                    <option value="ua">Ukraine</option>
+                    <option value="ro">Roumanie</option>
+                    <option value="nl">Pays-Bas</option>
+                    <option value="ca">Canada</option>
+                    <option value="se">Suède</option>
+                    <option value="no">Norvège</option>
+                    <option value="fi">Finlande</option>
+                    <option value="dk">Danemark</option>
+                </select>
                 <button id="search-button">Rechercher</button>
             </div>
         </div>
     </div>
     <div class="container">
         <div id="meteo">
-            <div id="date"></div>
             <div id="ville"></div>
-            <div id="temperature"></div>
-            <div id="description"></div>
-            <div class="humidity"></div>
-            <div class="wind"></div>
-            <i id="icon"></i>
+            <div class="row">
+                <div class="right-container">
+                    <i id="icon"></i>
+                    <div id="temperature"></div>
+                    <div class="info">
+                        <div class="rain"></div>
+                        <div class="humidity"></div>
+                        <div class="wind"></div>
+                    </div>
+                </div>
+                <div class="left-container">
+                    <div id="date"></div>
+                    <div id="description"></div>
+                </div>
+            </div>
+            <div class="row-courbe-temp"></div>
+            <div class="row-previews">
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
