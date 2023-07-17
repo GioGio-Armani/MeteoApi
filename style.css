@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #7fa6ca;
+    min-height: 100vh;
+}
+
+h1{
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.search{
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+label{
+    display: block;
+    font-weight: 600;
+}
+
+input[type="text"]{
+    width: 65%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus{
+    border: 1px solid #7fa6ca;
+    box-shadow: #7fa6ca 0px 0px 5px 0px;
+}
+
+button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background: #7fa6ca;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    margin-top: 10px;
+}
+
+#meteo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #f5f5f5;
+    border-radius: 10px;
+    width: max-content;
+    margin: 20px auto;
+}
+
+#date{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#ville{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+#temperature{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+#description{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+}
+
+.humidity{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.wind{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+#icon{
+    background: #7fa6ca;
+    border-radius: 50%;
+}
