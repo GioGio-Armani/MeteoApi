@@ -6,10 +6,6 @@
     <title>application meteo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"
-/>
 </head>
 <body>
     <h1>Meteo</h1>
@@ -66,7 +62,7 @@
         </div>
     </div>
     <div class="container">
-        <div id="meteo">
+        <div id="meteo" class="hidden">
             <div id="ville"></div>
             <div class="row">
                 <div class="right-container">
@@ -83,11 +79,16 @@
                     <div id="description"></div>
                 </div>
             </div>
-            <div class="row-courbe-temp"></div>
+            <div class="row-courbe-temp">
+                <canvas id="myChart"></canvas>
+            </div>
             <div class="row-previews">
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="
+    https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js
+    "></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

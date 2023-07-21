@@ -83,6 +83,13 @@ button{
     border-radius: 10px;
     width: max-content;
     margin: 20px auto;
+    padding: 20px;
+    transition: all 0.5s ease-in-out;
+}
+
+.hidden{
+    visibility: hidden;
+    opacity: 0;
 }
 
 .row{
@@ -127,7 +134,14 @@ button{
 }
 #description{
     font-size: 1.2rem;
-    color: rgb(96, 96, 96)
+    color: rgb(96, 96, 96);
+    text-transform: capitalize;
+}
+
+#myChart{
+    width: 600px !important;
+    height: 126px !important;
+    margin: 0 auto;
 }
 
 .row-previews{

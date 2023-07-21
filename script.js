@@ -2,13 +2,14 @@ const api = {
   key: "87c142b103ccea4c035d943bd3402a9b",
   base: "https://api.openweathermap.org/data/2.5/",
 };
-
 const searchbox = document.querySelector("#search-box");
 const btn = document.querySelector("button");
 const pays = document.querySelector("#country");
 
 const rowPreview = document.querySelector(`.row-previews`);
 const row = document.querySelector(`.row`);
+let tempsTab = [];
+let heureTab = [];
 
 searchbox.addEventListener("keypress", (e) => {
   if (e.keyCode === 13) {
@@ -29,9 +30,9 @@ function setQuery(evt) {
   }
 }
 
-function getResults(query, country) {
+function getResults(ville, country) {
   fetch(
-    `${api.base}forecast?q=${query},${country}&lang=fr&units=metric&appid=${api.key}&cnt=8`
+    `${api.base}forecast?q=${ville},${country}&lang=fr&units=metric&appid=${api.key}&cnt=9`
   )
     .then((weather) => {
       return weather.json();
@@ -48,8 +49,7 @@ function getResults(query, country) {
 function displayResults(weather) {
   console.log(weather);
   let meteoBox = document.querySelector("#meteo");
-  meteoBox.style.padding = "20px";
-  row.style.margin = "20px 0";
+  meteoBox.classList.remove("hidden");
   let city = document.querySelector("#ville");
   city.innerHTML = `${weather.city.name}, ${weather.city.country}`;
 
@@ -81,11 +81,11 @@ function displayResults(weather) {
 
   rowPreview.innerHTML = "";
 
-  for (let i = 0; i < 8; i++) {
+  for (let i = 1; i < 9; i++) {
     let col = document.createElement("div");
     col.classList.add("preview");
-    let heure = document.createElement("div");
-    heure.classList.add("heure");
+    // let heure = document.createElement("div");
+    // heure.classList.add("heure");
     let icon = document.createElement("div");
     icon.classList.add("icon");
     let temp = document.createElement("div");
@@ -93,48 +93,91 @@ function displayResults(weather) {
 
     let date = new Date(weather.list[i].dt_txt);
     let hour = date.getHours("fr-FR");
+    heureTab.push(hour + "h");
+    if (hour < 10) {
+      hour = `0${hour}`;
+    }
     let minutes = date.getMinutes("fr-FR");
-    let day = date.getDate();
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
 
-    heure.innerHTML = `${hour}:${minutes}`;
+    // heure.innerHTML = `${hour}:${minutes}`;
     icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${weather.list[i].weather[0].icon}.png"/>`;
     temp.innerHTML = `${Math.round(weather.list[i].main.temp)}°C`;
+    tempsTab.push(Math.round(weather.list[i].main.temp));
 
-    col.appendChild(heure);
+    // col.appendChild(heure);
     col.appendChild(icon);
     col.appendChild(temp);
 
     rowPreview.appendChild(col);
   }
-
   searchbox.value = "";
+  CreateCourbe(heureTab, tempsTab);
 }
 
 function dateBuilder(d) {
-  let months = [
-    "Janvier",
-    "Février",
-    "Mars",
-    "Avril",
-    "Mai",
-    "Juin",
-    "Juillet",
-    "Août",
-    "Septemebre",
-    "Octobre",
-    "Novembre",
-    "Décembre",
-  ];
   let days = [
     "Dimanche",
     "Lundi",
     "Mardi",
     "Mercredi",
-    "Jeudie",
+    "Jeudi",
     "Vendredi",
     "Samedi",
   ];
 
   let day = days[d.getDay()];
   return `${day}`;
+}
+// courbe température chart.js //
+Chart.defaults.font.size = 18;
+function CreateCourbe(x, y) {
+  var ctx = document.getElementById("myChart").getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: "line",
+    options: {
+      maintainAspectRatio: false,
+      plugins: {
+        tooltip: {
+          enabled: false,
+        },
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false,
+          },
+          ticks: {
+            fontSize: 50,
+          },
+        },
+        y: {
+          display: false,
+          grid: {
+            display: false,
+          },
+          beginAtZero: false,
+        },
+      },
+    },
+    data: {
+      labels: x,
+      datasets: [
+        {
+          data: y,
+          fill: true,
+          backgroundColor: ["#7fa6ca5b"],
+          borderColor: ["#7fa6ca"],
+          borderWidth: 2,
+          tension: 0.4,
+          pointRadius: 0,
+        },
+      ],
+    },
+  });
 }
