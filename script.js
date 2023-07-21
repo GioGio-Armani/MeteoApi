@@ -1,5 +1,5 @@
 const api = {
-  key: "87c142b103ccea4c035d943bd3402a9b",
+  key: "",
   base: "https://api.openweathermap.org/data/2.5/",
 };
 const searchbox = document.querySelector("#search-box");
